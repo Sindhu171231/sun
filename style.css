@@ -1,0 +1,951 @@
+
+:root {
+    --primary: linear-gradient(90deg, #1e3c72, #2a5298);
+    --secondary: #a0e00b;
+    --accent: #01FF70;
+    --dark: #333;
+    --light: #f7f7f7;
+    --white: #ffffff;
+    --button-color: #ff5733;
+    --button-hover: #4CAF50;
+    --navbar-bg: linear-gradient(90deg, #fcfcff 0%, #ffffff 50%, #ffffff 100%);
+    --navbar-text: #210101;
+    --dot-active: #ffeb3b;
+    --dot-inactive: rgba(255, 255, 255, 0.8);
+    --divbar-bg: #f0f0f0;
+    --divbar-text: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* html, body {
+    height: 100%;
+    
+} */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Fix for potential parent container issues */
+body > * {
+    position: relative; /* Ensure proper stacking context */
+}
+
+/* Divbar Styles */
+.divbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:  linear-gradient(90deg, #1e3c72, #2a5298);
+    padding: 8px 80px;
+    color: var(--divbar-text);
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.divbar-left {
+    display: flex;
+    gap: 20px;
+}
+
+.divbar-left a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.divbar-left a:hover {
+    color: var(--button-color);
+}
+
+.divbar-right {
+    display: flex;
+    gap: 15px;
+}
+.social-icon {
+display: flex;
+align-items: center;
+}
+
+.social-icon a {
+color: white;
+margin: 0 20px; /* Increased from 10px to 20px for wider spacing */
+font-size: 18px; /* Optional: making icons slightly larger */
+transition: transform 0.3s ease; /* Optional: smooth hover effect */
+}
+
+.social-icon a:hover {
+transform: scale(1.2); /* Optional: slight enlargement on hover */
+}
+
+
+/* Enhanced Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--navbar-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 80px;
+    border-bottom: 3px solid #ffd902;
+}
+.logo span {
+    display: inline-block;
+    position: relative;
+    font-weight: bold;
+    color: #333;
+    animation: sunTextGlow 3s ease-in-out infinite;
+    background: linear-gradient(90deg, #ffac30, #ff4500, #ffac30);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes sunTextGlow {
+    0% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 100% center;
+    }
+    100% {
+        background-position: 0% center;
+    }
+}
+
+/* Letter animation variant (uncomment to use this instead) */
+
+
+/* Another animation option: text reveal (uncomment to use) */
+
+.logo span {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+
+
+/* Sunshine rays effect for logo image (optional enhancement) */
+.logo img {
+    position: relative;
+}
+
+.logo img::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(255,172,48,0.6) 0%, rgba(255,172,48,0) 70%);
+    z-index: -1;
+    animation: sunRays 4s ease-in-out infinite;
+}
+
+@keyframes sunRays {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}
+
+.logo {
+display: flex;
+align-items: center;
+text-decoration: none;
+transition: transform 0.3s ease;
+}
+
+.logo:hover {
+transform: scale(1.02);
+}
+
+.logo img {
+width: 75px;
+height: 60px;
+margin-right: 15px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.logo span {
+color: #1e3c72;
+font-size: 1.4rem;
+font-weight: 600;
+letter-spacing: 0.5px;
+white-space: nowrap;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    height: auto;
+    justify-content: center;
+}
+.navbar.scrolled {
+    background-color: #dfea00; /* Blue color when scrolled */
+    padding: 15px 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.nav-links li {
+    position: relative;
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    color: var(--navbar-text);
+    height: auto;
+    text-align: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color:rgb(5, 5, 5);
+    gap: 1rem;
+    font-size: 1.3rem;
+    margin-right: 20px;
+    transition: all 0.3s;
+    position: relative;
+    height: auto;
+    display: inline-block;
+    width: max-content;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 5px 0;
+}
+
+/* Improved underline hover effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: var(--button-color);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease, box-shadow 0.3s;
+    border-radius: 10px;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    box-shadow: 0 0 8px rgba(200, 255, 0, 0.7);
+}
+
+.nav-links a:hover {
+    color:blue;
+    text-shadow: 0 0 5px rgba(203, 255, 13, 0.3);
+}
+
+/* Enhanced Button styling with pulse effect */
+.nav-links button {
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 0 0 rgba(255, 87, 51, 0.7);
+}
+
+.nav-links button:hover {
+    background-color: var(--button-hover);
+    animation: none;
+    color:white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 87, 51, 0.7);
+    }
+    
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 87, 51, 0);
+    }
+    
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 87, 51, 0);
+    }
+}
+
+.nav-links button a {
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.nav-links button a::after {
+    display: none;
+}
+
+/* Improved Dropdown - Now accessible on hover */
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a::before {
+    content: '\25BC';
+    font-size: 0.7rem;
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.3s;
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+}
+
+.dropdown:hover > a::before {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Enhanced Dropdown Menu */
+.dropdown .dropdown-content {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #333;
+    min-width: 220px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    padding: 0.7rem 0;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+    z-index: 1;
+    transition: transform 0.3s ease, opacity 0.3s;
+    visibility: hidden;
+}
+
+.dropdown:hover .dropdown-content {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-content a {
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #000000;
+    transition: all 0.3s;
+    height: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.dropdown-content a::after {
+    display: none;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(77, 76, 76, 0.2);
+   
+    transform: translateX(5px);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    height: auto;
+    color:var(--primary);
+}
+
+/* Redesigned Carousel Layout */
+.carousel-container {
+    width: 100%;
+    height: calc(100vh - 80px - 36px); /* Adjusted for navbar and divbar height */
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+/* .carousel-item {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    
+}
+.carousel-item.slide-in {
+    transform: translateX(0); /* Slide in the item */
+    .carousel-item {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+        display: none; /* Hide all items initially */
+       
+        transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
+    }
+    
+    .carousel-item.active {
+        display: flex; /* Show active item */
+    }
+    
+    .carousel-item.slide-up {
+        transform: translateX(0); /* Slide the item into view */
+    }
+    
+/* Left content section */
+.carousel-content {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgba(26, 35, 126, 0.05);
+}
+
+/* Right image section */
+.carousel-image {
+    width: 60%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Enhanced Caption Styling */
+.carousel-caption {
+    padding: 2rem;
+    text-align: left;
+    max-width: 90%;
+    color: var(--dark);
+}
+
+.carousel-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--button-color);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.carousel-caption h3 {
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1a237e;
+}
+
+.carousel-caption p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+}
+
+.discover-btn {
+    padding: 12px 25px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.discover-btn:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-3px);
+}
+
+.carousel-controls button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(26, 35, 126, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+    color: white;
+}
+
+.carousel-controls button:hover {
+    background: rgba(26, 35, 126, 0.9);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 15px rgba(26, 35, 126, 0.5);
+}
+
+#prevBtn {
+    left: 20px;
+}
+
+#nextBtn {
+    right: 20px;
+}
+
+/* Enhanced Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    position: absolute;
+    bottom: 30px;
+    left: 20%;
+    transform: translateX(-50%);
+    z-index: 10;
+    height: auto;
+    max-width: 80%;
+    gap: 10px;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(26, 35, 126, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.dot:hover {
+    transform: scale(1.2);
+    background: rgba(26, 35, 126, 0.7);
+}
+
+.dot.active {
+    background: var(--button-color);
+    transform: scale(1.3);
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(255, 87, 51, 0.7);
+}
+
+/* Donation Popup Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+    backdrop-filter: blur(5px);
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    max-width: 1000px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: popupAnimation 0.5s forwards;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes popupAnimation {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-content h2 {
+    margin-bottom: 1.5rem;
+    color: #1a237e;
+    font-size: 2.2rem;
+}
+
+.popup-content p {
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+.popup-content .donate-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    background-color: var(--button-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 87, 51, 0.3);
+}
+
+.popup-content .donate-btn:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(76, 175, 80, 0.4);
+}
+
+.close-popup {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-popup:hover {
+    color: #333;
+    background-color: #f7f7f7;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .divbar {
+        padding: 5px 1rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .divbar-left, .divbar-right {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .navbar {
+        padding: 0 1.5rem;
+        height: 70px;
+    }
+    
+    .logo span {
+        display: none; /* Hide the long text on mobile */
+    }
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--navbar-bg);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        padding: 1rem 0;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .nav-links li {
+        margin: 0.8rem 1rem;
+        align-items: center;
+    }
+    
+    /* Mobile carousel adjustments */
+    .carousel-container {
+        height: calc(100vh - 70px - 70px); /* Adjusted for mobile navbar and divbar */
+    }
+    
+    .carousel-item {
+        flex-direction: column;
+    }
+    
+    .carousel-content {
+        width: 100%;
+        height: 40%;
+        order: 2;
+        padding: 1rem;
+    }
+    
+    .carousel-image {
+        width: 100%;
+        height: 60%;
+        order: 1;
+    }
+    
+    .carousel-caption {
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .carousel-caption h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .carousel-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .discover-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .carousel-controls button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-dots {
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        justify-content: center;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        width: 90%;
+        min-width: unset;
+        padding: 0;
+        margin: 0.5rem auto;
+        transform: none;
+        left: auto;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        opacity: 1;
+        visibility: visible;
+        display: none;
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown-content a {
+        padding: 0.8rem 1rem;
+        text-align: center;
+        color:black;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: rgba(12, 52, 173, 0.2);
+        color: rgb(0, 0, 0);
+    }
+    
+    .nav-links a {
+        font-size: 1.3rem;
+        margin-right: 0;
+    }
+    
+    .nav-links button {
+        margin-top: 0.8rem;
+    }
+}
+.about-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-header {
+    margin-bottom: 40px;
+}
+
+.about-header h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.about-header p {
+    font-size: 18px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Cards Container */
+.cards-container {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.cards-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cards-header h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.cards-header p {
+    font-size: 18px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-img {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-content p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.card-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.card-btn:hover {
+    background-color: #45a049;
+}
